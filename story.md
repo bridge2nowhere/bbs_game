@@ -1,7 +1,9 @@
-#Backstory
+# Backstory
 ## Cult Details
+- Ceremony focus point is the here at this abandoned rail station https://www.rochestersubway.com/topics/2012/03/from-eyesore-to-opportunity-rochesters-lehigh-valley-rr-station/
+
 ## How does magic work?
-This is going to be in the style of Laundry Files, I'm not sure if it's set in the world or not yet
+This is going to be in the style of Laundry Files, I'm not sure if it's set in the world or not yet. Technology = sepllcasting
 
 ## BBSes
 I'm using the actual list of Bullitin Boards from the Rochester Area circa 1994. This is the printout that I actually had at home on our fmaily computer desk.
