@@ -19,6 +19,13 @@ A cult of Hastar is working to raiase them from the depths of Lake Ontario.
 
 # Hardware
 - a payphone
--- keypad
--- coin acceptor
-
+  - Keypad 
+  - Coin Acceptor - Register quarter insertions
+  - Handset and Switchhook
+- Marktek Delta-128 Computer System
+  - 20 Key kepad, 0-F,
+  - Receipt Printer
+  - Tricolor 20x8 VFD Display
+  - Acoustic Coupler to connect to payphone handest
+- RP2040 Microprocessor
+- Stemma QT I/O Expander
