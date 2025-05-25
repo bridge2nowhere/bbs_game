@@ -1,4 +1,3 @@
-# stpaulstreet
 
 # Description
 A cyber adventure set in Rochester, NY circa 1994.
