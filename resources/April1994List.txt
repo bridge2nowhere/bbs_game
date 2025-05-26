@@ -1,34 +1,4 @@
-From -1302899671145957478
-X-Google-Language: ENGLISH,ASCII-7-bit
-X-Google-Thread: 108be9,d872e821fd59fe4c,start
-X-Google-Attributes: gid108be9,public
-X-Google-Thread: ff4aa,d872e821fd59fe4c,start
-X-Google-Attributes: gidff4aa,public
-X-Google-Thread: ff809,d872e821fd59fe4c,start
-X-Google-Attributes: gidff809,public
-X-Google-Thread: f744b,d872e821fd59fe4c,start
-X-Google-Attributes: gidf744b,public
-X-Google-Thread: 102692,d872e821fd59fe4c,start
-X-Google-Attributes: gid102692,public
-X-Google-Thread: f571f,d872e821fd59fe4c,start
-X-Google-Attributes: gidf571f,public
-X-Google-Thread: 1056f8,d872e821fd59fe4c,start
-X-Google-Attributes: gid1056f8,public
-X-Google-ArrivalTime: 1994-03-31 21:49:59 PST
-Xref: gmd.de soc.motss:128606 alt.sex.motss:9583 alt.homosexual:14872 soc.bi:45780 alt.polyamory:11141 alt.bbs.lists:4575
-Path: gmd.de!xlink.net!howland.reston.ans.net!math.ohio-state.edu!news.acns.nwu.edu!merle.acns.nwu.edu!pyro
-From: pyro@merle.acns.nwu.edu (Leedell Miller)
-Newsgroups: soc.motss,alt.sex.motss,alt.homosexual,alt.sex.homosexual,soc.bi,alt.polyamory,alt.bbs.lists
-Subject: Gay & Lesbian BBS List - April 1994
-Date: 1 Apr 1994 05:49:59 GMT
-Organization: Northwestern University, Evanston IL
-Lines: 611
-Message-ID: <2ngcm7$jne@news.acns.nwu.edu>
-Reply-To: leedell@nwu.edu (Leedell Miller)
-NNTP-Posting-Host: unseen3.acns.nwu.edu
 
-------------------------------------------------------------------------------
-GAY0494.BBS                   __                                      04/01/94
                               \/
     THE GAY & LESBIAN BBS LIST - April 1994
     Published monthly by Risqilly BBS 708-495-6609
