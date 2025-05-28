@@ -5,12 +5,9 @@
 - Switch hook will work for hanging up from a BBS
 
 ## Marktek Delta-128 Computer System
-- 20 Key kepad, 0-F, Enter, Clear, Use,
-     C  D  E  F  CLEAR
-     8  9  A  B  GET
-     4  5  6  7  USE
-     0  1  2  3  ENTER 
-- Receipt Printer
+- 20 Key kepad, 0-F, Enter, Clear, Use, Get. Arrows will be overlayed on keys
+  
+- Thermal Receipt Printer
 - Tricolor 20x8 VFD Display
 - Acoustic Coupler to connect to payphone handest
 
