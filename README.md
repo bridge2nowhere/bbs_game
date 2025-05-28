@@ -12,7 +12,7 @@ Use a payphone, a small computer, and a printout of the local BBSs to stop an im
 - Save the world before you run out of quarters
 
 ## Spoilers
-A cult of Hastar is working to raiase them from the depths of Lake Ontario.  
+A cult of Hastur is working to raiase them from the depths of Lake Ontario.  
 
 
 # Hardware
