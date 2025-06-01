@@ -5,7 +5,7 @@
 - Switch hook will work for hanging up from a BBS
 
 ## Marktek Delta-128 Computer System
-- 20 Key kepad, 0-F, Enter, Clear, Use, Get. Arrows will be overlayed on keys
+- 20 Key kepad, 0-F, Enter, Clear, Get, Load. Arrows will be overlayed on keys
   
 - Thermal Receipt Printer
 - Tricolor 20x8 VFD Display
