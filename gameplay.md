@@ -11,7 +11,27 @@
 - Tricolor 20x8 VFD Display
 - Acoustic Coupler to connect to payphone handest
 
+# BBS Menus
+## Main Menu
+1 Messages
+2 Downloads
+3 Node Management
 
+## Messages Menu
+1 List Messages
+2 Read Messages
+
+## Downloads Menu
+1 List Files
+2 Download File
+3 Setup Batch Download
+
+## Node Management
+This is the gamne part, I'm not sure what it looks like yet. I'm going back and forth between text only and a map like Rogue.
+
+# PC/NPC Attributes
+- AMPlitude which is Strength of attack
+- HEAT which is your health (processer temperature)
 
 # Items
 Items have an 
