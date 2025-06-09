@@ -27,7 +27,7 @@
 3 Setup Batch Download
 
 ## Node Management
-This is the gamne part, I'm not sure what it looks like yet. I'm going back and forth between text only and a map like Rogue.
+This is the interactive portion of the game. I decided not to use arrows on the pad.
 
 # PC/NPC Attributes
 - AMPlitude which is Strength of attack
