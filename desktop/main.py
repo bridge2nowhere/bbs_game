@@ -14,9 +14,18 @@ def handle_dialing():
     global game_mode
     global phone_number
 
-    phone_number = int(input('Enter phone number to dial (352-2222 should be 3522222): '))
+
+    phone_number = input('Enter phone number to dial (352-2222 should be 3522222): ')
+    try:
+        phone_number = int(phone_number)
+    except ValueError as ve:
+        print('Not a valid number')
     while bbs.lookup(phone_number) == 'dial again':
-        phone_number = int(input('Enter phone number to dial (352-2222 should be 3522222): '))
+        phone_number = input('Enter phone number to dial (352-2222 should be 3522222): ')
+        try:
+            phone_number = int(phone_number)
+        except ValueError as ve:
+            print('Not a valid number')
     print('Connected to ' + str(phone_number))
     print('\n\n')
     if bbs.bbs_list[bbs.bbs_connected].file_list == []:
@@ -31,7 +40,7 @@ def handle_menu():
     if menu_mode == 'main':
         print('Welcome to ' + bbs.lookup(phone_number))
         print('[1] Messages')
-        print('[2] Download Files')
+        print('[2] Files')
         if bbs.bbs_list[bbs.bbs_connected].identify:
             print('[3] Identify Files')
         print('[4] Node Mangement')
@@ -52,16 +61,23 @@ def handle_menu():
             phone_number = None
         else:
             print('invalid selection')
+    elif menu_mode == 'messages':
+        pass
     elif menu_mode == 'files':
-        for index,file in enumerate(bbs.bbs_list[bbs.bbs_connected].file_list):
-            print(format(index, '04X') + ' | ' + file.id)
-        user_input = input('Choose file to download: ')
-        if user_input == '':
-            menu_mode = 'main'
+        print('[1] List Files')
+        print('[2] Download Files')
+        choice = int(input(']>'))
+        if choice == 1:
+            for index,file in enumerate(bbs.bbs_list[bbs.bbs_connected].file_list):
+                fancy_size = ''
+                if file.size < 1000:
+                    fancy_size = str(file.size) + 'kb'
+                else:
+                    fancy_size = str(file.size/1000) + 'mb'
+                print(format(index, '04X') + ' | ' + file.id + fancy_size.rjust(8,' ')  )
         else:
-            download = int(user_input, 16)
-            print(bbs.bbs_list[bbs.bbs_connected].file_list[download].id)
-            input()
+            print('invalid selection')
+
 
 
 while True:

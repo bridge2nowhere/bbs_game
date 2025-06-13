@@ -35,12 +35,12 @@ constList = ['ANDROMEDA','ANTLIA','APUS','AQUARIUS','AQUILA','ARA','ARIES','AURI
 
 
 #Player Weapons Procedures = METAL_WEAPON.PROC = TIN_FLAIL.PROC
-metalList = ['TITANIUM','MERCURY','COPPER','BRASS','BRONZE','STEEL','IRON','GOLD','SILVER','LITHIUM','CHROME','COBALT','ZINC',
-            'ZIRCONIUM','LEAD','PEWTER','RHODIUM','PALLADIUM','CABMIUM','TIN','ANTIMONY','TUNGSTEN','TANTALUM','IRIDIUM',
-            'BISMUTH','POLONUIUM']
+metalList = ['TI','HG','CU','FE','AU','AG','LI','CR','CO','ZN',
+            'ZR','PB','RH','PD','CD','SN','SB','W','TA','IR',
+            'BI','PO']
 
-weaponList = ['GLAIVE','PIKE','HALBERD','SCYTHE','BATTLEAXE','DAGGER','CLUB','FLAIL','MACE','HAMMER','STAFF','LONGSWORD','ARMINGSWORD',
-            'BROADSWORD','TRIDENT']
+weaponList = ['GLAIV','PIKE','HLBRD','SCYTH','BTLAX','DAGGR','CLUB','FLAIL','MACE','HAMMR','STAFF','LNSWD',
+            'SWORD','TRIDN']
 
 
 #stops repeat items
@@ -71,15 +71,15 @@ class Item:
             #creates random item id and true id
             if itemType == 'tlmn':
                 self.type = 'tlmn'
-                self.id = random.choice(colorList) + "_" + random.choice(animalList) + ".TMN"
+                self.id = (random.choice(colorList) + "_" + random.choice(animalList) + ".TMN").ljust(12,' ')
                 self.trueID = "HEALTH_BOOST.TMN"
             elif itemType == 'proc':
                 self.type = 'proc'
-                self.id = random.choice(metalList) + "_" + random.choice(weaponList) + ".PRC"
+                self.id = (random.choice(metalList) + "_" + random.choice(weaponList) + ".PRC").ljust(12,' ')
                 self.trueID = "PLUS_1_SMASHER.PRC"
             elif itemType == 'msmr':
                 self.type = 'msmr'
-                self.id = random.choice(gemstoneList) + "_" + random.choice(constList) + ".MSR"
+                self.id = (random.choice(gemstoneList) + "_" + random.choice(constList) + ".MSR").ljust(12,' ')
                 self.trueID = "SHORT_CIRCUIT.MMR"
 
             #if item has been found before, it is identified automatically
@@ -172,10 +172,10 @@ file_list.append(File('MODEM-DR.ZIP',245,'Modem Doctor'))
 file_list.append(File('EXCHECK.ZIP ',921,'Express Check'))
 file_list.append(File('ZIP-FNDR.ZIP',414,'Zip Key Finder'))
 file_list.append(File('A86-ASSM.ZIP',2166,'Assembler/Debugger'))
-file_list.append(File('VIZPASCAL.ZIP',480,'Visible Pascal'))
+file_list.append(File('VZPASCAL.ZIP',480,'Visible Pascal'))
 file_list.append(File('KJVBIBLE.ZIP ',8142,'KJV Bible'))
 file_list.append(File('GUITEACH.ZIP ',715,'Guitar Teacher'))
-file_list.append(File('LOTTO.ZIP ',323,'Lottery Prophet'))
+file_list.append(File('LOTTO.ZIP    ',323,'Lottery Prophet'))
 file_list.append(File('GARDASST.ZIP ',224,'Gardener\'s Asst.'))
 file_list.append(File('SKYGLOBE.ZIP ',877,'Skyglobe'))
 file_list.append(File('FASTYPE.ZIP  ',606,'PC-Fastype Tutor'))
