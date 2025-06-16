@@ -74,7 +74,10 @@ def handle_menu():
                     fancy_size = str(file.size) + 'kb'
                 else:
                     fancy_size = str(file.size/1000) + 'mb'
-                print(format(index, '04X') + ' | ' + file.id + fancy_size.rjust(8,' ')  )
+                print(format(index, '04X') + ' | ' + file.id + fancy_size.rjust(8,' '), file.description )
+        elif choice == 2:
+            downloadFile = int(input("Enter File ID: "),16)
+            print(bbs.bbs_list[bbs.bbs_connected].file_list[downloadFile].id)
         else:
             print('invalid selection')
 

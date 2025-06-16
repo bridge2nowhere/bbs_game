@@ -48,6 +48,8 @@ itemIndexMaster = []
 #holds identified items if they are found again
 knownItemMaster = []
 
+item_inventory = []
+
 #types of items to enforce good item creation
 itemTypes = ['tlmn','msmr','proc','rndm']
 
@@ -133,8 +135,8 @@ file_list.append(File('PT1.ZIP     ',275,'Pharaoh\'s Tomb'))
 file_list.append(File('HHH.ZIP     ',319,'Hugo\'s House of Horror'))
 file_list.append(File('SW1.ZIP     ',614,'Solar Winds Ep1'))
 file_list.append(File('CRNCOB3D.ZIP',770,'Corncob 3-D'))
-file_list.append(File('CVLWARST.ZIP',332,'Big Three WW2'))
-file_list.append(File('BIGTHREE.ZIP',614,'EGA/VGA Pinball'))
+file_list.append(File('CVLWARST.ZIP',332,'Civil War Stretegy'))
+file_list.append(File('BIGTHREE.ZIP',614,'WW2 Strategy Game'))
 file_list.append(File('STRATEGY.ZIP',722,'Stratego Clone'))
 file_list.append(File('C_CHCKRS.ZIP',614,'Chinese Checkers'))
 file_list.append(File('PRO-GOLF.ZIP',588,'PC Pro-Golf'))
