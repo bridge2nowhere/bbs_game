@@ -2,15 +2,19 @@
 import bbs
 import item
 
+#state machine for the game
 game_mode_list = ['dial_tone','bbs_menu','bbs_node']
 game_mode = 'dial_tone'
 phone_number = 0
 
+#state machine for the menuing system
 menu_mode_list = ['main','files','messages','ident']
 menu_mode = 'main'
 
 
+
 def handle_dialing():
+    """this function handles the dialing of a bbs once connected it returns"""
     global game_mode
     global phone_number
 
@@ -28,11 +32,10 @@ def handle_dialing():
             print('Not a valid number')
     print('Connected to ' + str(phone_number))
     print('\n\n')
-    if bbs.bbs_list[bbs.bbs_connected].file_list == []:
-        bbs.bbs_list[bbs.bbs_connected].first_connect()
     game_mode = 'bbs_menu'
 
 def handle_menu():
+    """this function handles the menu system for the BBS, returns to dialing or to node management"""
     global game_mode
     global menu_mode
     global phone_number
@@ -83,6 +86,7 @@ def handle_menu():
 while True:
 
     if game_mode == 'dial_tone':
+        #list of sites for testing purposes
         print('=========BBS List==========')
         print('Free File Farm     352-6544')
         print('Goose Roost        223-0412')
