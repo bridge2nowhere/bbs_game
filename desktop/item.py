@@ -108,10 +108,10 @@ class Item:
             print(self.description)
 
     def download(self):
-        self.downloaded = True
-        download_list.append(self)
-
-        self.itemReceipt()
+        if not self.downloaded:
+            self.downloaded = True
+            download_list.append(self)
+            self.itemReceipt()
 
 
 class File:

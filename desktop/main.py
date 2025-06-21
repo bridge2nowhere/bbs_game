@@ -70,7 +70,7 @@ def handle_menu():
         print('[1] List Files')
         print('[2] Download Files')
         print('[3] Return to Main Menu')
-        choice = int(input(']>'))
+        choice = int(input(']>'),16)
         if choice == 1:
             for index,file in enumerate(bbs.bbs_list[bbs.bbs_connected].file_list):
                 fancy_size = ''
