@@ -69,6 +69,7 @@ def handle_menu():
     elif menu_mode == 'files':
         print('[1] List Files')
         print('[2] Download Files')
+        print('[3] Return to Main Menu')
         choice = int(input(']>'))
         if choice == 1:
             for index,file in enumerate(bbs.bbs_list[bbs.bbs_connected].file_list):
@@ -77,7 +78,18 @@ def handle_menu():
                     fancy_size = str(file.size) + 'kb'
                 else:
                     fancy_size = str(file.size/1000) + 'mb'
-                print(format(index, '04X') + ' | ' + file.id + fancy_size.rjust(8,' ')  )
+                print(format(index, '04X') + ' | ' + file.file_name + fancy_size.rjust(8,' ') + ' | '+ str(type(file)) )
+        elif choice == 2:
+                #ask the user for the index, loop if the number is invalid or it's not an item
+                download_index = int(input('File Index: '),16)
+                while download_index >= len(bbs.bbs_list[bbs.bbs_connected].file_list) or type(bbs.bbs_list[bbs.bbs_connected].file_list[download_index]) == item.File:
+                    print('invalid file index')
+                    download_index = int(input('File Index: '),16)
+                #download the file
+                bbs.bbs_list[bbs.bbs_connected].file_list[download_index].download()
+        elif choice == 3:
+            #return to the main meu
+            menu_mode = 'main'
         else:
             print('invalid selection')
 
