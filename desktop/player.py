@@ -2,5 +2,5 @@
 
 class Player:
     def __init__(self):
-        self.heat = 0
-        self.strength = 4
+        self.heat = 10
+        self.power = 4

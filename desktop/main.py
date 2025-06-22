@@ -113,12 +113,35 @@ def handle_menu():
                 print(format(index, '04X') + ' | ' + file.file_name + ' | ' + fancy_size.rjust(8,' ') + ' | '+ file.description )
         elif choice == 2:
                 #ask the user for the index, loop if the number is invalid or it's not an item
-                download_index = int(input('File Index: '),16)
-                while download_index >= len(bbs.bbs_list[bbs.bbs_connected].file_list) or type(bbs.bbs_list[bbs.bbs_connected].file_list[download_index]) == item.File:
-                    print('invalid file index')
+                try:
                     download_index = int(input('File Index: '),16)
-                #download the file
-                bbs.bbs_list[bbs.bbs_connected].file_list[download_index].download()
+                except ValueError as ve:
+                    pass
+                else:
+                    while download_index >= len(bbs.bbs_list[bbs.bbs_connected].file_list) or type(bbs.bbs_list[bbs.bbs_connected].file_list[download_index]) == item.File:
+                        print('invalid file index')
+                        download_index = int(input('File Index: '),16)
+                    #download the file
+                    bbs.bbs_list[bbs.bbs_connected].file_list[download_index].download()
+        elif choice == 3:
+            #return to the main meu
+            menu_mode = 'main'
+        else:
+            print('invalid selection')
+    elif menu_mode == 'ident':
+        print('[1] List Local File Inventory')
+        print('[2] Identify File')
+        print('[3] Return to Main Menu')
+        choice = int(input(']>'),16)
+        if choice == 1:
+            for i in item.download_list:
+                print(format(i.itemIndex, '04X') + ' | ' + i.file_name + ' | ' + i.description)
+            print('\n\n')
+        elif choice == 2:
+            for i in item.download_list:
+                if not i.identified:
+                    i.identify()
+            print('operation complete')
         elif choice == 3:
             #return to the main meu
             menu_mode = 'main'

@@ -95,17 +95,16 @@ class Item:
     def identify(self):
         """handles detail of identification"""
         self.identified = True
+        self.description = 'Decoded file name'
         knownItemMaster.append(self.file_name)
         self.itemReceipt()
+
 
     def itemReceipt(self):
         #handles generating item receipt data
         print(hex(self.itemIndex))
         print(self.file_name)
-        if self.identified:
-            print(self.true_description)
-        else:
-            print(self.description)
+        print(self.description)
 
     def download(self):
         if not self.downloaded:
