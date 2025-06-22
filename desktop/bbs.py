@@ -9,8 +9,15 @@ class BBS:
         self.bname = board_name                                             #BBS name
         self.identify = has_ident                                           #can identify items
 
+        self.file_list = []
+        self.message_list = []
+
+        self.visited = False
+
+    def first_visit(self):
         self.file_list = item.make_file_list(random.randint(5,50))         #populates file list for the site including distractors
-        self.message_list = messages.make_message_list()                   #message list for the site
+        self.message_list = messages.make_message_list()
+        self.visited = True
 
 
 #current site connected to

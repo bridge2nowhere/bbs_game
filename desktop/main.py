@@ -1,6 +1,7 @@
 # Write your code here :-)
 import bbs
 import item
+from player import *
 
 #state machine for the game
 game_mode_list = ['dial_tone','bbs_menu','bbs_node']
@@ -10,6 +11,10 @@ phone_number = 0
 #state machine for the menuing system
 menu_mode_list = ['main','files','messages','ident']
 menu_mode = 'main'
+
+#game management
+player = Player()
+chapter = 1
 
 
 
@@ -32,6 +37,8 @@ def handle_dialing():
             print('Not a valid number')
     print('Connected to ' + str(phone_number))
     print('\n\n')
+    if not bbs.bbs_list[bbs.bbs_connected].visited:
+       bbs.bbs_list[bbs.bbs_connected].first_visit()
     game_mode = 'bbs_menu'
 
 def handle_menu():
@@ -78,7 +85,7 @@ def handle_menu():
                     fancy_size = str(file.size) + 'kb'
                 else:
                     fancy_size = str(file.size/1000) + 'mb'
-                print(format(index, '04X') + ' | ' + file.file_name + fancy_size.rjust(8,' ') + ' | '+ str(type(file)) )
+                print(format(index, '04X') + ' | ' + file.file_name + fancy_size.rjust(8,' ') + ' | '+ file.description )
         elif choice == 2:
                 #ask the user for the index, loop if the number is invalid or it's not an item
                 download_index = int(input('File Index: '),16)
