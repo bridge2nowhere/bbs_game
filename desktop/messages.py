@@ -5,9 +5,11 @@ def make_message_list() -> 'Message[]':
     msgs = []
     #handles adds 1-4 items into the list
     #qty = random.randint(0,4+1)
-    for m in range(random.randint(0,4+1)):
-        index = random.randint(0,len(master_message_list))
-        msgs.append(master_message_list.pop(index))
+    for m in range(random.randint(0,4)+1):
+        index = random.randint(0,len(master_message_list)-1)
+        msg = master_message_list.pop(index)
+        msgs.append(msg)
+        #msgs.append(master_message_list.pop(index))
     random.shuffle(msgs)
     return(msgs)
 

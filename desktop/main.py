@@ -72,20 +72,45 @@ def handle_menu():
         else:
             print('invalid selection')
     elif menu_mode == 'messages':
-        pass
+        print('[1] List Messages')
+        print('[2] Read Messages')
+        print('[3] Return to Main Menu')
+        choice = int(input(']>'),16)
+        if choice == 1:
+            print('INDEX| BRD |  USER        | SUBJECT')
+            print('-----+-----+--------------+---------')
+            for index,msg in enumerate(bbs.bbs_list[bbs.bbs_connected].message_list):
+                print(format(index, '04X') + ' | ' + msg.board + ' | ' + msg.user + ' | '+ msg.subject )
+            print('\n')
+        elif choice == 2:
+                #ask the user for the index, loop if the number is invalid or it's not an item
+                msg_index = int(input('Message Index: '),16)
+                while msg_index >= len(bbs.bbs_list[bbs.bbs_connected].message_list):
+                    print('invalid index')
+                    msg_index = int(input('Message Index: '),16)
+                print(bbs.bbs_list[bbs.bbs_connected].message_list[msg_index].subject)
+                print(bbs.bbs_list[bbs.bbs_connected].message_list[msg_index].date + '     ' + bbs.bbs_list[bbs.bbs_connected].message_list[msg_index].user )
+                print('\n' + bbs.bbs_list[bbs.bbs_connected].message_list[msg_index].post + '\n\n')
+        elif choice == 3:
+            #return to the main meu
+            menu_mode = 'main'
+        else:
+            print('invalid selection')
     elif menu_mode == 'files':
         print('[1] List Files')
         print('[2] Download Files')
         print('[3] Return to Main Menu')
         choice = int(input(']>'),16)
         if choice == 1:
+            print('INDEX| NAME         | SIZE     | DESCRIPTION')
+            print('-----+--------------+----------+-----------------')
             for index,file in enumerate(bbs.bbs_list[bbs.bbs_connected].file_list):
                 fancy_size = ''
                 if file.size < 1000:
                     fancy_size = str(file.size) + 'kb'
                 else:
                     fancy_size = str(file.size/1000) + 'mb'
-                print(format(index, '04X') + ' | ' + file.file_name + fancy_size.rjust(8,' ') + ' | '+ file.description )
+                print(format(index, '04X') + ' | ' + file.file_name + ' | ' + fancy_size.rjust(8,' ') + ' | '+ file.description )
         elif choice == 2:
                 #ask the user for the index, loop if the number is invalid or it's not an item
                 download_index = int(input('File Index: '),16)
