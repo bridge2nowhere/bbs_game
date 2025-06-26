@@ -1,40 +1,39 @@
 import random
 import string
 
-def make_file_list(qty):
+def make_file_list(qty:int) -> 'File[]':
+    """takes a quantity and returns a list of that many files with 1-4 items shuffled in"""
     files = []
+    #handles adds 1-4 items into the list
     items = random.randint(0,3) + 1
     for f in range(items):
         files.append(Item('rndm'))
+    #the rest of the files are randomly chosen from the file list
     for f in range(qty-items):
         files.append(random.choice(file_list))
+    #shuffles the list to hide the items
     random.shuffle(files)
     return(files)
 
-#Each found program will have a two part name that is randomized each time the game starts
 
-#Player Buffs/Curses Talisman = COLOR_ANIMAL.TLMN = YELLOW HUMMINGBIRD.TLMN
+#Player Buffs/Curses Talismans use color_animal naming convention
 colorList = ['RED','YLW','BLU','GRN','IND','CER','CHA','VER','PER','CRM','MAG','SNA','CIN']
 animalList = ['ADVK','AGTR','ALPC','ANTR','ANTL','ARMD','BDGR','BRCD','BAT',
             'BVER','BISN','PNTR','BBCT','BUFF','BTRF','CAML','CAT','CHTH','CHMP','CBRA','CGAR',
             'COW','COYT','CRKT','DEER','DOG','DNKY','DRGN','ELPT','FRRT','FISH','FLEA','FLY','FOX','FROG','GOAT',
             'GPHR','GRLA','HMST','HARE','HAWK','HRSE','IGNA','KNGR','LMUR','LPRD','LION','LZRD','LLMA','MNKY',
-            'MOTH','MOUS','MULE','OTTR','OX','PNDA','PIG','PRPN','RBIT','RACN','RAT','RSNK','RSTR','SHEEP','SLOTH','SNAIL',
+            'MOTH','MOUS','MULE','OTTR','OX','PNDA','PIG','PRPN','RBIT','RACN','RAT','RSNK','RSTR','SHEP','SLTH','SNAL',
             'SNAK','SPDR','TIGR','WOLF','WMBT','ZBRA']
 
-#Castable Spells Mesmers = GEMSTONE_CONSTILLATION.MSMR = ZIRCON_GEMINI.MSMR
-#gemstoneList = ['AGATE','ALEXANDRITE','AMBER','AMETHYST','AQUAMARINE','BERYL','BLOODSTONE','CERUELEITE','CITRINE','DIAMOND','EMERALD',
-#              'GARNATE','HEMATITE','JET','LAPISLAZULI', 'MALACHITE','MOONSTONE','OBSIDIAN','ONYX','PERIDOT','QUARTZ','RUBY','SAPHIRE',
-#              'SPINEL','TANTALITE','TOPAZ','TOURMALINE','ZIRCON']
-
+#Castable Spells Mesmers use constellation naming convention
 constList = ['ANDROMDA','ANTLIA','APUS','AQUARIUS','AQUILA','ARA','ARIES','AURIGA','BOOTES','CAELUM','CANCER','CANIS','CAPRICRN',
           'CARINA','CASSIPIA','CNTAURUS','CEPHEUS','CETUS','CIRCINUS','COLUMBA','CORVUS','CRATER','CRUX','CYGNUS','DELPHNUS','DORADO','DRACO','EQUULEUS','ERIDANUS',
           'FORNAX','GEMINI','GRUS','HERCULES','HOROLGUM','HYDRA','HYDRUS','INDUS','LACERTA','LEO','LEPUS','LIBRA','LUPUS','LYNX','LYRA','MENSA','MONOCROS',
-          'MUSCA','NORMA','OCTANS','OPHIUCHUS','ORION','PAVO','PEGASUS','PERSEUS','PHOENIX','PICTOR','PISCES','PUPPIS','PYXIS','RETICULUM','SAGITTA','SAGITRIS','SCORPIUS',
+          'MUSCA','NORMA','OCTANS','OPHICHUS','ORION','PAVO','PEGASUS','PERSEUS','PHOENIX','PICTOR','PISCES','PUPPIS','PYXIS','RETICULUM','SAGITTA','SAGITRIS','SCORPIUS',
           'SCULPTOR','SCUTUM','SERPENS','SEXTANS','TAURUS','TUCANA','URSA','VELA','VIRGO','VOLANS','VULPCULA']
 
 
-#Player Weapons Procedures = METAL_WEAPON.PROC = TIN_FLAIL.PROC
+#Player Weapons Procedures use matal_weapon naming convention
 metalList = ['TI','HG','CU','FE','AU','AG','LI','CR','CO','ZN',
             'ZR','PB','RH','PD','CD','SN','SB','W','TA','IR',
             'BI','PO']
@@ -43,10 +42,13 @@ weaponList = ['GLAIV','PIKE','HLBRD','SCYTH','BTLAX','DAGGR','CLUB','FLAIL','MAC
             'SWORD','TRIDN']
 
 
-#stops repeat items
+#stops repeat itemIndexes
 itemIndexMaster = []
+#stops repeat itemIndexes
+download_list = []
 #holds identified items if they are found again
 knownItemMaster = []
+file_name_master = []
 
 item_inventory = []
 
@@ -54,10 +56,14 @@ item_inventory = []
 itemTypes = ['tlmn','msmr','proc','rndm']
 
 class Item:
+    """class handles useable items"""
     def __init__(self,itemType):
+        #files size
         self.size = random.randint(250,4000)
+        #random description (replaced on identifaction)
         self.description = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(16))
-
+        self.downloaded = False
+        #rejects incorect item types
         if itemType not in itemTypes:
            raise ValueError("not a valid type only rndm,tlmn,msmr,proc")
         else:
@@ -73,43 +79,51 @@ class Item:
             #creates random item id and true id
             if itemType == 'tlmn':
                 self.type = 'tlmn'
-                self.id = (random.choice(colorList) + "_" + random.choice(animalList) + ".TMN").ljust(12,' ')
-                self.trueID = "HEALTH_BOOST.TMN"
+                self.file_name = (random.choice(colorList) + "_" + random.choice(animalList) + ".TMN").ljust(12,' ')
             elif itemType == 'proc':
                 self.type = 'proc'
-                self.id = (random.choice(metalList) + "_" + random.choice(weaponList) + ".PRC").ljust(12,' ')
-                self.trueID = "PLUS_1_SMASHER.PRC"
+                self.file_name = (random.choice(metalList) + "_" + random.choice(weaponList) + ".PRC").ljust(12,' ')
             elif itemType == 'msmr':
                 self.type = 'msmr'
-                self.id = (random.choice(constList) + ".MSR").ljust(12,' ')
-                self.trueID = "SHORT_CIRCUIT.MMR"
+                self.file_name = (random.choice(constList) + ".MSR").ljust(12,' ')
 
             #if item has been found before, it is identified automatically
-            if self.trueID in knownItemMaster:
-                self.knownTrueID = True
+            if self.file_name in knownItemMaster:
+                self.identified = True
             else:
-                self.knownTrueID = False
+                self.identified = False
+
 
     def identify(self):
-        #identifies the item so that true id is known
-        self.knownTrueID = True
-        knownItemMaster.append(self.trueID)
+        """handles detail of identification"""
+        self.identified = True
+        self.description = 'Decoded file name'
+        knownItemMaster.append(self.file_name)
+        self.itemReceipt()
+
 
     def itemReceipt(self):
         #handles generating item receipt data
         print(hex(self.itemIndex))
-        if self.knownTrueID:
-            print(self.trueID)
-        else:
-            print(self.id)
+        print(self.file_name)
+        print(self.description)
+
+    def download(self):
+        if not self.downloaded:
+            self.downloaded = True
+            download_list.append(self)
+            self.itemReceipt()
+
 
 class File:
+     """handles distractor files to conceal items"""
      def __init__(self,file_name, file_size, file_description):
-        self.id = file_name
+        self.file_name = file_name
         self.size = file_size
         self.description = file_description
 
 
+#shareware file listing
 file_list = []
 file_list.append(File('KEEN1.ZIP   ',1200,'Commander Keen 1'))
 file_list.append(File('KEEN4.ZIP   ',2300,'Ep4:GoodbyeGalaxy'))
