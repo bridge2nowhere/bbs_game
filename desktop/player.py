@@ -14,20 +14,44 @@ class Enemy:
         self.heat = chap * 3
         self.power = chap * 2
 
+
+class Empty:
+    def __init__(self):
+        self.enemy_index = 0000
+
 def node_initialize(bbs,p,chap):
     bbs.node_initalize(chap)
 
-def draw_screen():
-
-
-
 def node_frame(bbs,p):
-    print('2345 4324 12F5 586C')
-    print('--]----]----[----[-')
-    print('--]----]----[----[-')
-    print('2345 4324 12F5 586C')
-    node = int(input('Choose node to attack'),16)
+    enemy_print_list = []
+    all_dead = True
+    for e in bbs.enemy_list:
 
+        if e.enemy_index == 0000:
+            enemy_print_list.append(' $$ ')
+        else:
+            enemy_print_list.append(format(e.enemy_index, '04X'))
+            all_dead = False
+
+    print(enemy_print_list[0] + ' ' +
+        enemy_print_list[1] + ' ' +
+        enemy_print_list[2] + ' ' +
+        enemy_print_list[3] + ' ')
+    print('╔═╧════╧════╧════╧╗')
+    print('╚═╤════╤════╤════╤╝')
+    print(enemy_print_list[4] + ' ' +
+        enemy_print_list[5] + ' ' +
+        enemy_print_list[6] + ' ' +
+        enemy_print_list[7] + ' ')
+    if all_dead:
+        pause = input('All Nodes Cleared')
+        return True
+    else:
+        node = input('Choose node to attack: ').upper()
+        for i,e in enumerate(enemy_print_list):
+            if node == e:
+                bbs.enemy_list[i].heat -= p.heat
+        return False
 
 def node_game_over(p):
     print('The water of Lake Ontario roils as Hastur emerges.')

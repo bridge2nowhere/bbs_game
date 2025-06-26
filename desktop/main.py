@@ -172,4 +172,8 @@ while True:
             node_game_over(player)
             break
         else:
-            node_frame(bbs.bbs_list[bbs.bbs_connected],player)
+            bbs.bbs_list[bbs.bbs_connected].update_enemies()
+            if node_frame(bbs.bbs_list[bbs.bbs_connected],player):
+                game_mode = 'bbs_menu'
+                menu_mode = 'main'
+                player.score += 1

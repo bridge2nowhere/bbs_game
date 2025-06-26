@@ -25,7 +25,14 @@ class BBS:
     def node_initalize(self,chap):
         for e in range(random.randint(1,8)):
             self.enemy_list.append(player.Enemy(chap))
+        while len(self.enemy_list) < 8:
+            self.enemy_list.append(player.Empty())
+        random.shuffle(self.enemy_list)
 
+    def update_enemies(self):
+        for ind,enm in enumerate(self.enemy_list):
+            if isinstance(enm, player.Enemy) and enm.heat <= 0:
+                self.enemy_list[ind] = player.Empty()
 
 #current site connected to
 bbs_connnected = None
