@@ -154,8 +154,8 @@ while True:
 
     if game_mode == 'dial_tone':
         #list of sites for testing purposes
-        print('=========BBS List==========')
-        print('Free File Farm     352-6544')
+        print('=========BBS List==================')
+        print('Free File Farm     352-6544   IDENT')
         print('Goose Roost        223-0412')
         print('The Crystal Palace 224-8216')
         print('TMagic Carpet      225-7446')
