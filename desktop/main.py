@@ -164,3 +164,12 @@ while True:
     if game_mode == 'bbs_menu':
         handle_menu()
 
+    if game_mode == 'bbs_node':
+        if not bbs.bbs_list[bbs.bbs_connected].node_initialized:
+            node_initialize(bbs.bbs_list[bbs.bbs_connected],player,chapter)
+            bbs.bbs_list[bbs.bbs_connected].node_initialized = True
+        elif player.heat <= 0:
+            node_game_over(player)
+            break
+        else:
+            node_frame(bbs.bbs_list[bbs.bbs_connected],player)

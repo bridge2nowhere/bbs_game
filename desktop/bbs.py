@@ -1,6 +1,7 @@
 import random
 import item
 import messages
+import player
 
 class BBS:
     """class for handleing BBS objects"""
@@ -11,13 +12,19 @@ class BBS:
 
         self.file_list = []
         self.message_list = []
+        self.enemy_list = []
 
         self.visited = False
+        self.node_initialized = False
 
     def first_visit(self):
         self.file_list = item.make_file_list(random.randint(5,50))         #populates file list for the site including distractors
         self.message_list = messages.make_message_list()
         self.visited = True
+
+    def node_initalize(self,chap):
+        for e in range(random.randint(1,8)):
+            self.enemy_list.append(player.Enemy(chap))
 
 
 #current site connected to
