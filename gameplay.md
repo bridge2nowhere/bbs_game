@@ -40,5 +40,38 @@ Items have an
 - true id is shown after it is identified
 
 ## Talisman - These are buffs and curses that affect the player
+- +1 crit
+- +2 crit
+- -2 crit
+- -1 power
+- +1 power
+- +2 power
+- +3 power
+- +1 heat
+- +2 heat
+- +3 heat
+- -2 heat
+- +1 shield
+- +2 shield
+- -1 vulnerable
+- 1 turn stun 
 ## Mesmers - These are castable spells that affect enemies
+- 1 turn stun
+- 2 turn stun
+- -1 power
+- -2 power
+- -1 heat
+- -2 heat
+- +1 power
+- +1 heat
+- -1 vulnerable
+- -2 vulnerable
+- +1 shield
 ## Procedures - These are upgraded weapons.
+- +1 power
+- +2 power
+- +3 power
+- +4 power
+- +1 power/+1 crit
+- +2 power/+2 crit
+- 
