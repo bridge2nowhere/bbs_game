@@ -1,11 +1,11 @@
 import random
 import time
+from item import *
 
 class Player:
     def __init__(self):
         self.heat = 10
         self.power = 4
-
         self.score = 0
 
 class Enemy:
@@ -47,10 +47,28 @@ def node_frame(bbs,p):
         pause = input('All Nodes Cleared')
         return True
     else:
+        print('Enter I for Inventory/L for Load')
         node = input('Choose node to attack: ').upper()
-        for i,e in enumerate(enemy_print_list):
-            if node == e:
-                bbs.enemy_list[i].heat -= p.heat
+        if node == 'I':
+            print('Heat = ' + str(p.heat) + ' Power = ' + str(p.power))
+            print('---------------------------------------------')
+            if download_list:
+                for i in item.download_list:
+                    print(format(i.itemIndex, '04X') + ' | ' + i.file_name + ' | ' + i.description)
+        if node == 'L':
+            item = int(input('Item Index: ',16))
+            target = input('Target [P]layer or Enemy Index: ')
+            if target == 'P':
+                p.power += 1
+            else:
+                for i,e in enumerate(enemy_print_list):
+                    if node == e:
+                        bbs.enemy_list[i].power += 1
+        else:
+            for i,e in enumerate(enemy_print_list):
+                if node == e:
+                    bbs.enemy_list[i].heat -= p.heat
+                    p.heat -= 3
         return False
 
 def node_game_over(p):
@@ -58,5 +76,3 @@ def node_game_over(p):
     print('the power of his aura incinerates youinstantly;')
     print('your death is painless. Other are not so lucky\n')
     print(p.score)
-
-

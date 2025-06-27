@@ -50,7 +50,7 @@ download_list = []
 knownItemMaster = []
 file_name_master = []
 
-item_inventory = []
+#item_inventory = []
 
 #types of items to enforce good item creation
 itemTypes = ['tlmn','msmr','proc','rndm']

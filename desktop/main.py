@@ -55,7 +55,12 @@ def handle_menu():
             print('[3] Identify Files')
         print('[4] Node Mangement')
         print('[5] Disconnect')
-        choice = int(input(']>'))
+        try:
+            choice = int(input(']>'))
+        except ValueError as ve:
+            print('Not a valid number')
+            choice = 0
+
         if choice == 1:
             menu_mode = 'messages'
         elif choice == 2:
