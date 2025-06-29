@@ -1,6 +1,6 @@
 import random
 import time
-from item import *
+import item
 
 class Player:
     def __init__(self):
@@ -50,13 +50,16 @@ def node_frame(bbs,p):
         print('Enter I for Inventory/L for Load')
         node = input('Choose node to attack: ').upper()
         if node == 'I':
-            print('Heat = ' + str(p.heat) + ' Power = ' + str(p.power))
-            print('---------------------------------------------')
-            if download_list:
+            print('\n\n\n┌ Player Stats ───────────────')
+            print('│ Heat = ' + str(p.heat) + ' Power = ' + str(p.power))
+            print('└────────────────────────────')
+
+            if item.download_list:
                 for i in item.download_list:
                     print(format(i.itemIndex, '04X') + ' | ' + i.file_name + ' | ' + i.description)
+            print('\n\n')
         if node == 'L':
-            item = int(input('Item Index: ',16))
+            i_index = int(input('Item Index: '),16)
             target = input('Target [P]layer or Enemy Index: ')
             if target == 'P':
                 p.power += 1
