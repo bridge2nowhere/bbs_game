@@ -54,7 +54,8 @@ Items have an
 - +1 shield
 - +2 shield
 - -1 vulnerable
-- 1 turn stun 
+- 1 turn stun
+- no effect 
 ## Mesmers - These are castable spells that affect enemies
 - 1 turn stun
 - 2 turn stun
@@ -67,6 +68,8 @@ Items have an
 - -1 vulnerable
 - -2 vulnerable
 - +1 shield
+- break connection/deletion
+- no effect
 ## Procedures - These are upgraded weapons.
 - +1 power
 - +2 power
@@ -74,4 +77,23 @@ Items have an
 - +4 power
 - +1 power/+1 crit
 - +2 power/+2 crit
-- 
+
+# Enemy Classes?
+Should enemies have different types?
+
+If so we would use the first number of the index to indicate type:
+1xxx
+2xxx
+3xxx
+4xxx
+5xxx
+6xxx
+7xxx
+8xxx
+9xxx
+Axxx
+Bxxx
+Cxxx
+Dxxx
+Exxx
+Fxxx
