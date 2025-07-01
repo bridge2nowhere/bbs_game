@@ -42,6 +42,11 @@ weaponList = ['GLAIV','PIKE','HLBRD','SCYTH','BTLAX','DAGGR','CLUB','FLAIL','MAC
             'SWORD','TRIDN']
 
 
+
+
+
+
+
 #stops repeat itemIndexes
 itemIndexMaster = []
 #stops repeat itemIndexes
@@ -113,6 +118,27 @@ class Item:
             self.downloaded = True
             download_list.append(self)
             self.itemReceipt()
+
+
+class Item_effect:
+    def __init__ (self, desc, pwr, ht, crit, shld, vul, stn, dlt,wpn_power,wpn_crit):
+        self.description = desc,
+        self.power = pwr,
+        self.heat = ht,
+        self.shield = shld,
+        self.vulnerable = vul,
+        self.stun = stn,
+        self.delete = dlt,
+        self.weapon_power = wpn_power,
+        self.weapon_crit = wpn_crit
+
+
+tali_list = []
+tali_list.append(Item_effect('+1 Crit', 0, 0, 0, 1, 0, 0, True, 0,0))
+tali_list.append(Item_effect('+2 Crit', 0, 0, 0, 2, 0, 0, True, 0,0))
+
+msmr_list = []
+proc_list = []
 
 
 class File:

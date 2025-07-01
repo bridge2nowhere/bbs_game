@@ -4,15 +4,26 @@ import item
 
 class Player:
     def __init__(self):
+        self.score = 0
+
         self.heat = 10
         self.power = 4
-        self.score = 0
+
+        self.critical = 20
+        self.stunned = 0 #lost turns
+        self.
+
+
+    def attack(self):
+        c
+        attack = random.randint(1,power)
 
 class Enemy:
     def __init__(self,chap):
         self.enemy_index = random.randint(4096,65534)
         self.heat = chap * 3
         self.power = chap * 2
+    def attack(self):
 
 
 class Empty:
