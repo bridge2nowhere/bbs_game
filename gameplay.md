@@ -75,6 +75,8 @@ Items have an
 - +2 power
 - +3 power
 - +4 power
+- +1 crit
+- +2 crit
 - +1 power/+1 crit
 - +2 power/+2 crit
 
