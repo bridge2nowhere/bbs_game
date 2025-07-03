@@ -8,6 +8,8 @@ class Player:
 
         self.heat = 10
         self.power = 4
+        self.weapon_power = 0
+        self.weapon_crit = 0
 
         self.critical = 20
         self.stunned = 0 #lost turns
@@ -68,15 +70,28 @@ def node_frame(bbs,p):
                 for i in item.download_list:
                     print(format(i.itemIndex, '04X') + ' | ' + i.file_name + ' | ' + i.description)
             print('\n\n')
-        if node == 'L':
+        elif node == 'L':
             i_index = int(input('Item Index: '),16)
-            target = input('Target [P]layer or Enemy Index: ')
-            if target == 'P':
-                p.power += 1
-            else:
-                for i,e in enumerate(enemy_print_list):
-                    if node == e:
-                        bbs.enemy_list[i].power += 1
+            for array_index, itm in enumerate(item.download_list):
+                if itm.index == i_index:
+                    #use item
+                    if itm.itemType == 'msmr':
+                        pass
+                    elif itm.itemType == 'proc':
+                        p.weapon_power = itm.effect.weapon_power
+                        p.weapon_crit = itm.effect.weapon_crit
+                    elif itm.itemType == 'tlmn':
+                        pass
+                    #remove item
+                    download_list.pop(array_index)
+
+            #target = input('Target [P]layer or Enemy Index: ')
+            #if target == 'P':
+            #    p.power += 1
+            #else:
+            #    for i,e in enumerate(enemy_print_list):
+            #        if node == e:
+            #            bbs.enemy_list[i].power += 1
         else:
             for i,e in enumerate(enemy_print_list):
                 if node == e:
