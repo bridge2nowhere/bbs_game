@@ -85,12 +85,16 @@ class Item:
             if itemType == 'tlmn':
                 self.type = 'tlmn'
                 self.file_name = (random.choice(colorList) + "_" + random.choice(animalList) + ".TMN").ljust(12,' ')
+                self.effect = random.choice(tlmn_list)
+                #print(self.effect.description)
             elif itemType == 'proc':
                 self.type = 'proc'
                 self.file_name = (random.choice(metalList) + "_" + random.choice(weaponList) + ".PRC").ljust(12,' ')
+                self.effect = random.choice(proc_list)
             elif itemType == 'msmr':
                 self.type = 'msmr'
                 self.file_name = (random.choice(constList) + ".MSR").ljust(12,' ')
+                self.effect = random.choice(msmr_list)
 
             #if item has been found before, it is identified automatically
             if self.file_name in knownItemMaster:
@@ -102,7 +106,7 @@ class Item:
     def identify(self):
         """handles detail of identification"""
         self.identified = True
-        self.description = 'Decoded file name'
+        self.description = self.effect.description
         knownItemMaster.append(self.file_name)
         self.itemReceipt()
 
@@ -120,9 +124,10 @@ class Item:
             self.itemReceipt()
 
 
+
 class Item_effect:
     def __init__ (self, desc, pwr, ht, crit, shld, vul, stn, dlt,wpn_power,wpn_crit):
-        self.description = desc,
+        self.description = desc
         self.power = pwr,
         self.heat = ht,
         self.shield = shld,
@@ -133,13 +138,15 @@ class Item_effect:
         self.weapon_crit = wpn_crit
 
 
-tali_list = []
-tali_list.append(Item_effect('+1 Crit', 0, 0, 0, 1, 0, 0, True, 0,0))
-tali_list.append(Item_effect('+2 Crit', 0, 0, 0, 2, 0, 0, True, 0,0))
+tlmn_list = []
+tlmn_list.append(Item_effect('add 1 Crit', 0, 0, 0, 1, 0, 0, False, 0,0))
+tlmn_list.append(Item_effect('add 2 Crit', 0, 0, 0, 2, 0, 0, False, 0,0))
 
 msmr_list = []
-proc_list = []
+msmr_list.append(Item_effect('sub 2 Heat', 0, -2, 0, 0, 0, 0, False, 0,0))
 
+proc_list = []
+proc_list.append(Item_effect('add 1 Crit', 0, 0, 0, 0, 0, 0, False, 0,1))
 
 class File:
      """handles distractor files to conceal items"""

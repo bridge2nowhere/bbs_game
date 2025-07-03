@@ -11,12 +11,11 @@ class Player:
 
         self.critical = 20
         self.stunned = 0 #lost turns
-        self.
+
 
 
     def attack(self):
-        c
-        attack = random.randint(1,power)
+        attack = random.randint(1,self.power)
 
 class Enemy:
     def __init__(self,chap):
@@ -24,7 +23,7 @@ class Enemy:
         self.heat = chap * 3
         self.power = chap * 2
     def attack(self):
-
+        attack = random.randint(1,self.power)
 
 class Empty:
     def __init__(self):
