@@ -1,8 +1,7 @@
 import random
 import csv
+import config
 
-#config
-file_import = False
 
 
 def make_message_list() -> 'Message[]':
@@ -32,7 +31,7 @@ class Message:
 
 master_message_list = []
 
-if file_import:
+if config.file_import:
     print('file import turned on')
     message_file = input('Enter CSV File: ')
     with open(message_file, 'r') as csv_file:
