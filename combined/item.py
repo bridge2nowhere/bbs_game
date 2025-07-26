@@ -33,7 +33,7 @@ constList = ['ANDROMDA','ANTLIA','APUS','AQUARIUS','AQUILA','ARA','ARIES','AURIG
           'SCULPTOR','SCUTUM','SERPENS','SEXTANS','TAURUS','TUCANA','URSA','VELA','VIRGO','VOLANS','VULPCULA']
 
 
-#Player Weapons Procedures use matal_weapon naming convention
+#Player Weapons Procedures use metal_weapon naming convention
 metalList = ['TI','HG','CU','FE','AU','AG','LI','CR','CO','ZN',
             'ZR','PB','RH','PD','CD','SN','SB','W','TA','IR',
             'BI','PO']
@@ -139,14 +139,14 @@ class Item_effect:
 
 
 tlmn_list = []
-tlmn_list.append(Item_effect('add 1 Crit', 0, 0, 0, 1, 0, 0, False, 0,0))
-tlmn_list.append(Item_effect('add 2 Crit', 0, 0, 0, 2, 0, 0, False, 0,0))
+tlmn_list.append(Item_effect(desc='add 1 Crit', pwr=0, ht=0, crit=1, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
+tlmn_list.append(Item_effect(desc='add 2 Crit', pwr=0, ht=0, crit=2, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
 
 msmr_list = []
-msmr_list.append(Item_effect('sub 2 Heat', 0, -2, 0, 0, 0, 0, False, 0,0))
+msmr_list.append(Item_effect(desc='-2 Heat', pwr=0, ht=-2, crit=0, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
 
 proc_list = []
-proc_list.append(Item_effect('add 1 Crit', 0, 0, 0, 0, 0, 0, False, 0,1))
+proc_list.append(Item_effect(desc='+2 Crit Weapon', pwr=0, ht=0, crit=0, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=2))
 
 class File:
      """handles distractor files to conceal items"""

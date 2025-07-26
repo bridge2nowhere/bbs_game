@@ -3,45 +3,43 @@ import time
 import item
 
 
-class Person:
+
+class Player:
     def __init__(self):
-        self.heat = None
-        self.power = None
-
-        self.critical = 20
-        self.stunned = 0
-
-    def attack(self):
-        attack = random.randint(1,self.power)
-
-class Player(Person):
-    def __init__(self):
-        super().__init__()
         self.score = 0
 
         self.heat = 10
         self.power = 4
-
         self.weapon_power = 0
         self.weapon_crit = 0
 
+        self.critical = 20
+        self.stunned = 0 #lost turns
 
 
 
+    def attack(self):
+        attack = random.randint(1,self.power)
 
-class Enemy(Person):
+class Enemy:
     def __init__(self,chap):
-        super().__init__()
         self.enemy_index = random.randint(4096,65534)
         self.heat = chap * 3
         self.power = chap * 2
 
+        self.critical = 20
+        self.stunned = 0 #lost turns
+
+    def attack(self):
+        attack = random.randint(1,self.power)
 
 class Empty:
     def __init__(self):
         self.enemy_index = 0000
 
 
+def item_handler(item,target):
+    if type(target) ==
 
 def node_initialize(bbs,p,chap):
     bbs.node_initalize(chap)
@@ -90,9 +88,9 @@ def node_frame(bbs,p):
                     if itm.itemType == 'msmr':
                         target = input('target=')
                         for e in bbs.enemy_list:
-                            if target == e.enemy_index:
+                            if target == e.enemy_index
                                 item_handler(itm,e)
-                    else:
+                    else
                         item_handler(itm,p)
                     #remove item
                     download_list.pop(array_index)
