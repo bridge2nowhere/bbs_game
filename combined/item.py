@@ -126,12 +126,11 @@ class Item:
 
 
 class Item_effect:
-    def __init__ (self, desc, pwr, ht, crit, shld, vul, stn, dlt,wpn_power,wpn_crit):
+    def __init__ (self, desc, pwr, ht, crit, shld, stn, dlt,wpn_power,wpn_crit):
         self.description = desc
         self.power = pwr,
         self.heat = ht,
         self.shield = shld,
-        self.vulnerable = vul,
         self.stun = stn,
         self.delete = dlt,
         self.weapon_power = wpn_power,
@@ -139,14 +138,14 @@ class Item_effect:
 
 
 tlmn_list = []
-tlmn_list.append(Item_effect(desc='add 1 Crit', pwr=0, ht=0, crit=1, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
-tlmn_list.append(Item_effect(desc='add 2 Crit', pwr=0, ht=0, crit=2, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
+tlmn_list.append(Item_effect(desc='add 1 Crit', pwr=0, ht=0, crit=1, shld=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
+tlmn_list.append(Item_effect(desc='add 2 Crit', pwr=0, ht=0, crit=2, shld=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
 
 msmr_list = []
-msmr_list.append(Item_effect(desc='-2 Heat', pwr=0, ht=-2, crit=0, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
+msmr_list.append(Item_effect(desc='-2 Heat', pwr=0, ht=-2, crit=0, shld=0, stn=0, dlt=False, wpn_power=0, wpn_crit=0))
 
 proc_list = []
-proc_list.append(Item_effect(desc='+2 Crit Weapon', pwr=0, ht=0, crit=0, shld=0, vul=0, stn=0, dlt=False, wpn_power=0, wpn_crit=2))
+proc_list.append(Item_effect(desc='+2 Crit Weapon', pwr=0, ht=0, crit=0, shld=0, stn=0, dlt=False, wpn_power=0, wpn_crit=2))
 
 class File:
      """handles distractor files to conceal items"""
@@ -167,13 +166,11 @@ file_list.append(File('MORAFFWO.ZIP',964,'Moraff\'s World'))
 file_list.append(File('CATAABYS.ZIP',3590,'Catacomb Abyss'))
 file_list.append(File('COSMOEP1.ZIP',964,'Cosmo\'s Cosmic Adv'))
 file_list.append(File('FORDSIM1.ZIP',320,'Ford Simulator'))
-file_list.append(File('FORDSIM1.ZIP',320,'Ford Simulator'))
 file_list.append(File('ARCTIC1.ZIP ',811,'Arctic Adventure'))
 file_list.append(File('CC1.ZIP     ',320,'Crystal Caves'))
 file_list.append(File('MJRSTRKR.ZIP',1290,'Major Stryker'))
-file_list.append(File('OXYD.ZIP    ',3312,'Major Stryker'))
+file_list.append(File('OXYD.ZIP    ',3312,'Oxyd'))
 file_list.append(File('SHOOTGAL.ZIP',545,'VGA Shooting Gallery'))
-file_list.append(File('MJRSTRKR.ZIP',698,'Major Stryker'))
 file_list.append(File('CDMAN.ZIP   ',699,'CD-MAN'))
 file_list.append(File('REDHOOK.ZIP ',968,'Redhook\'s Revenge'))
 file_list.append(File('CAPTURE1.ZIP',396,'Capture the Flag'))

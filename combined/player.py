@@ -7,12 +7,45 @@ class Person:
     def __init__(self):
         self.heat = None
         self.power = None
+        self.shield = 0
 
         self.critical = 20
         self.stunned = 0
 
-    def attack(self):
-        attack = random.randint(1,self.power)
+        self.weapon_power = 0
+        self.weapon_crit = 0
+
+
+
+    def update_stun(self):
+        self.stunned -= 1
+        if self.stunned < 0:
+            self.stunned = 0
+
+    def attack(self) -> int:
+        crit = 1
+        if random.randint(0,self.critical) == 1:
+            crit = 2
+        max_power = self.power + self.weapon_power
+        low_power = max_power // 2
+        damage_amnt = random.randint(low_power,(max_power * crit))
+        return damage_amnt
+
+    def take_hit(self,damage_amnt):
+        self.heat -= damage_amnt - self.shield
+
+    def use_item(self,item):
+        self.power += item.power
+        self.heat += item.heat
+        self.shield += item.shield
+        self.stunned += item.stun
+
+
+        self.weapon_power = item.weapon_power
+        self.weapon_crit  = item.weapon_crit
+
+        if item.delete:
+            self.heat = 0
 
 class Player(Person):
     def __init__(self):
@@ -85,30 +118,22 @@ def node_frame(bbs,p):
         elif node == 'L':
             i_index = int(input('Item Index: '),16)
             for array_index, itm in enumerate(item.download_list):
-                if itm.index == i_index:
+                if itm.itemIndex == i_index:
                     #use item
-                    if itm.itemType == 'msmr':
+                    if itm.type == 'msmr':
                         target = input('target=')
                         for e in bbs.enemy_list:
                             if target == e.enemy_index:
-                                item_handler(itm,e)
+                                e.use_item(itm)
                     else:
-                        item_handler(itm,p)
+                        p.use_item(itm)
                     #remove item
                     download_list.pop(array_index)
-
-            #target = input('Target [P]layer or Enemy Index: ')
-            #if target == 'P':
-            #    p.power += 1
-            #else:
-            #    for i,e in enumerate(enemy_print_list):
-            #        if node == e:
-            #            bbs.enemy_list[i].power += 1
         else:
             for i,e in enumerate(enemy_print_list):
                 if node == e:
-                    bbs.enemy_list[i].heat -= p.heat
-                    p.heat -= 3
+                    bbs.enemy_list[i].take_hit(p.attack())
+                    p.take_hit(bbs.enemy_list[i].attack())
         return False
 
 def node_game_over(p):
