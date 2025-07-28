@@ -28,7 +28,8 @@ class Person:
             crit = 2
         max_power = self.power + self.weapon_power
         low_power = max_power // 2
-        damage_amnt = random.randint(low_power,(max_power * crit))
+        damage_amnt = random.randint(low_power,(max_power+1) * crit)
+        #print(f"max_power={max_power}, low_power={low_power}, damage={damage_amnt}")
         return damage_amnt
 
     def take_hit(self,damage_amnt):
