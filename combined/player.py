@@ -2,8 +2,8 @@ import random
 import time
 import item
 
-
 class Person:
+    """Superclass for all characters"""
     def __init__(self):
         self.heat = None
         self.power = None
@@ -16,13 +16,14 @@ class Person:
         self.weapon_crit = 0
 
 
-
     def update_stun(self):
+        """count down for stun effects (missed turns)"""
         self.stunned -= 1
         if self.stunned < 0:
             self.stunned = 0
 
     def attack(self) -> int:
+        """creates attack damage"""
         crit = 1
         if random.randint(0,self.critical) == 1:
             crit = 2
@@ -33,9 +34,11 @@ class Person:
         return damage_amnt
 
     def take_hit(self,damage_amnt):
+        """removes damage from attack"""
         self.heat -= damage_amnt - self.shield
 
     def use_item(self,item):
+        """updates all Person variables based on item effects"""
         self.power += item.power
         self.heat += item.heat
         self.shield += item.shield
@@ -49,6 +52,7 @@ class Person:
             self.heat = 0
 
 class Player(Person):
+    """class for player character"""
     def __init__(self):
         super().__init__()
         self.score = 0
@@ -64,6 +68,7 @@ class Player(Person):
 
 
 class Enemy(Person):
+    """Class for enemy characters"""
     def __init__(self,chap):
         super().__init__()
         self.enemy_index = random.randint(4096,65534)
@@ -72,15 +77,19 @@ class Enemy(Person):
 
 
 class Empty:
+    """subsitute class for missing enemy nodes"""
     def __init__(self):
         self.enemy_index = 0000
 
 
 
 def node_initialize(bbs,p,chap):
+    """creates the node enemies on first arrival"""
     bbs.node_initalize(chap)
 
-def node_frame(bbs,p):
+def node_frame(bbs,p)-> bool:
+    """handles one node action"""
+    #create list of active enemies
     enemy_print_list = []
     all_dead = True
     for e in bbs.enemy_list:
@@ -90,7 +99,7 @@ def node_frame(bbs,p):
         else:
             enemy_print_list.append(format(e.enemy_index, '04X'))
             all_dead = False
-
+    #draw node screen
     print(enemy_print_list[0] + ' ' +
         enemy_print_list[1] + ' ' +
         enemy_print_list[2] + ' ' +
@@ -101,9 +110,11 @@ def node_frame(bbs,p):
         enemy_print_list[5] + ' ' +
         enemy_print_list[6] + ' ' +
         enemy_print_list[7] + ' ')
+    #if there are no enemies left, exit with true
     if all_dead:
         pause = input('All Nodes Cleared')
         return True
+    #get player's move and implement attacks
     else:
         print('Enter I for Inventory/L for Load')
         node = input('Choose node to attack: ').upper()
@@ -133,8 +144,15 @@ def node_frame(bbs,p):
         else:
             for i,e in enumerate(enemy_print_list):
                 if node == e:
-                    bbs.enemy_list[i].take_hit(p.attack())
-                    p.take_hit(bbs.enemy_list[i].attack())
+                    if p.stun == 0:
+                        bbs.enemy_list[i].take_hit(p.attack())
+                    else:
+                        p.update_stun()
+
+                    if e.stun == 0:
+                        p.take_hit(bbs.enemy_list[i].attack())
+                    else:
+                        e.update_stun()
         return False
 
 def node_game_over(p):
