@@ -144,12 +144,12 @@ def node_frame(bbs,p)-> bool:
         else:
             for i,e in enumerate(enemy_print_list):
                 if node == e:
-                    if p.stun == 0:
+                    if p.stunned == 0:
                         bbs.enemy_list[i].take_hit(p.attack())
                     else:
                         p.update_stun()
 
-                    if e.stun == 0:
+                    if bbs.enemy_list[i].stunned == 0:
                         p.take_hit(bbs.enemy_list[i].attack())
                     else:
                         e.update_stun()
