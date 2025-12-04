@@ -1,5 +1,5 @@
 # Description
-A cyber adventure set in Rochester, NY circa 1994.
+A cyber adventure set in Rochester, NY circa 1994. May 19, 1994
 
 Use a payphone, a small computer, and a printout of the local BBSs to stop an impending horror.
 
